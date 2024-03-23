@@ -42,7 +42,7 @@ export default defineConfig(async (): Promise<Options[]> => {
           },
         }),
       ],
-      format: ['cjs', 'iife'],
+      format: ['cjs', 'esm', 'iife'],
       loader: {
         '.json?file': 'file',
         '.wasm': 'binary',
@@ -51,6 +51,7 @@ export default defineConfig(async (): Promise<Options[]> => {
       minify: true,
       outDir: OUTPUT_DIR,
       platform: 'browser',
+      skipNodeModulesBundle: true,
       sourcemap: 'inline',
       splitting: true,
       target: 'es2020',
