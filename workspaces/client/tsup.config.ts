@@ -48,7 +48,7 @@ export default defineConfig(async (): Promise<Options[]> => {
           },
         }),
       ],
-      format: 'cjs',
+      format: ['cjs', 'iife'],
       loader: {
         '.json?file': 'file',
         '.wasm': 'binary',
@@ -60,7 +60,6 @@ export default defineConfig(async (): Promise<Options[]> => {
       sourcemap: 'inline',
       splitting: true,
       target: 'es2020',
-      treeshake: true,
     },
   ];
 });
