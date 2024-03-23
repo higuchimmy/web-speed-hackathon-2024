@@ -2,11 +2,10 @@
   "name": "@wsh-2024/client",
   "private": true,
   "scripts": {
-    "build": "pnpm run build:clean && pnpm run build:tsup && pnpm run build:copy && pnpm run build:vite",
+    "build": "pnpm run build:clean && pnpm run build:tsup && pnpm run build:copy",
     "build:clean": "rm -rf ./dist",
     "build:copy": "cp -r ./assets ./dist/assets",
-    "build:tsup": "tsup",
-    "build:vite": "vite build"
+    "build:tsup": "tsup"
   },
   "dependencies": {
     "@jsquash/jxl": "1.1.0",
