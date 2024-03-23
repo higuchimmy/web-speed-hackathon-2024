@@ -10,6 +10,7 @@ export default defineConfig(async (): Promise<Options[]> => {
 
   return [
     {
+      bundle: true,
       clean: true,
       entry: {
         server: path.resolve(PACKAGE_DIR, 'src/server.tsx'),
