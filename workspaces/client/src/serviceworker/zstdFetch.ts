@@ -1,4 +1,4 @@
-import * as fzstd from 'fzstd';
+import { Decompress } from 'fzstd';
 
 export async function zstdFetch(request: Request): Promise<Response> {
   const originalResponse = await fetch(request, {
@@ -9,7 +9,7 @@ export async function zstdFetch(request: Request): Promise<Response> {
 
   switch (accept) {
     case 'zstd': {
-      const decompresser = new fzstd.Decompress();
+      const decompresser = new Decompress();
 
       const transform = new TransformStream<Uint8Array, Uint8Array>({
         start(controller) {

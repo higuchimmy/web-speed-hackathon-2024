@@ -2,8 +2,6 @@ import fs from 'node:fs/promises';
 
 import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
-import jsesc from 'jsesc';
-import moment from 'moment-timezone';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { ServerStyleSheet } from 'styled-components';
@@ -13,7 +11,6 @@ import { featureApiClient } from '@wsh-2024/app/src/features/feature/apiClient/f
 import { rankingApiClient } from '@wsh-2024/app/src/features/ranking/apiClient/rankingApiClient';
 import { releaseApiClient } from '@wsh-2024/app/src/features/release/apiClient/releaseApiClient';
 import { ClientApp } from '@wsh-2024/app/src/index';
-import { getDayOfWeekStr } from '@wsh-2024/app/src/lib/date/getDayOfWeekStr';
 
 import { INDEX_HTML_PATH } from '../../constants/paths';
 
@@ -23,7 +20,11 @@ async function createInjectDataStr(): Promise<Record<string, unknown>> {
   const json: Record<string, unknown> = {};
 
   {
-    const dayOfWeek = getDayOfWeekStr(moment());
+    const date = new Date();
+    const dayOfWeekNumber = date.getDay();
+    const dayOfWeek = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'][
+      dayOfWeekNumber
+    ] as string;
     const releases = await releaseApiClient.fetch({ params: { dayOfWeek } });
     json[unstable_serialize(releaseApiClient.fetch$$key({ params: { dayOfWeek } }))] = releases;
   }
@@ -58,11 +59,14 @@ async function createHTML({
     .replaceAll(
       '<script id="inject-data" type="application/json"></script>',
       `<script id="inject-data" type="application/json">
-        ${jsesc(injectData, {
-          isScriptContext: true,
-          json: true,
-          minimal: true,
-        })}
+        ${
+      // jsesc(injectData, {
+      //     isScriptContext: true,
+      //     json: true,
+      //     minimal: true,
+      // })
+      JSON.stringify(injectData)
+      }
       </script>`,
     );
 
