@@ -1,4 +1,4 @@
-import type * as CSS from 'csstype';
+import { type Property } from 'csstype';
 import type { AriaAttributes } from 'react';
 import styled from 'styled-components';
 
@@ -9,8 +9,8 @@ const _Box = styled.div<{
   $backgroundColor?: string;
   $bottom?: number;
   $color?: string;
-  $flexGrow?: CSS.Property.FlexGrow;
-  $flexShrink?: CSS.Property.FlexShrink;
+  $flexGrow?: Property.FlexGrow;
+  $flexShrink?: Property.FlexShrink;
   $height?: number | string;
   $left?: number;
   $m?: number;
@@ -22,9 +22,9 @@ const _Box = styled.div<{
   $mt?: number;
   $mx?: number;
   $my?: number;
-  $overflow?: CSS.Property.Overflow;
-  $overflowX?: CSS.Property.Overflow;
-  $overflowY?: CSS.Property.Overflow;
+  $overflow?: Property.Overflow;
+  $overflowX?: Property.Overflow;
+  $overflowY?: Property.Overflow;
   $p?: number;
   $pb?: number;
   $pl?: number;
@@ -74,8 +74,8 @@ type Props = {
   bottom?: number;
   children: React.ReactNode;
   color?: Color;
-  flexGrow?: CSS.Property.FlexGrow;
-  flexShrink?: CSS.Property.FlexShrink;
+  flexGrow?: Property.FlexGrow;
+  flexShrink?: Property.FlexShrink;
   height?: number | string;
   left?: number;
   m?: number;
@@ -87,13 +87,13 @@ type Props = {
   mt?: number;
   mx?: number;
   my?: number;
-  overflow?: CSS.Property.Overflow;
-  overflowX?: CSS.Property.Overflow;
-  overflowY?: CSS.Property.Overflow;
+  overflow?: Property.Overflow;
+  overflowX?: Property.Overflow;
+  overflowY?: Property.Overflow;
   p?: number;
   pb?: number;
   pl?: number;
-  position?: CSS.Property.Position;
+  position?: Property.Position;
   pr?: number;
   pt?: number;
   px?: number;

@@ -60,11 +60,6 @@ async function createHTML({
       '<script id="inject-data" type="application/json"></script>',
       `<script id="inject-data" type="application/json">
         ${
-      // jsesc(injectData, {
-      //     isScriptContext: true,
-      //     json: true,
-      //     minimal: true,
-      // })
       JSON.stringify(injectData)
       }
       </script>`,

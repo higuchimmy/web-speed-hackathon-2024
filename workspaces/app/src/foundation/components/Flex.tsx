@@ -1,4 +1,4 @@
-import type * as CSS from 'csstype';
+import { type Property } from 'csstype';
 import styled from 'styled-components';
 
 import { addUnitIfNeeded } from '../../lib/css/addUnitIfNeeded';
@@ -6,8 +6,8 @@ import { addUnitIfNeeded } from '../../lib/css/addUnitIfNeeded';
 const _Flex = styled.div<{
   $align?: string;
   $direction?: string;
-  $flexGrow?: CSS.Property.FlexGrow;
-  $flexShrink?: CSS.Property.FlexShrink;
+  $flexGrow?: Property.FlexGrow;
+  $flexShrink?: Property.FlexShrink;
   $gap?: number;
   $justify?: string;
   $p?: number;
@@ -34,18 +34,18 @@ const _Flex = styled.div<{
 `;
 
 type Props = {
-  align: CSS.Property.AlignItems;
+  align: Property.AlignItems;
   as?: keyof JSX.IntrinsicElements;
   children: React.ReactNode;
-  direction?: CSS.Property.FlexDirection;
-  flexGrow?: CSS.Property.FlexGrow;
-  flexShrink?: CSS.Property.FlexShrink;
+  direction?: Property.FlexDirection;
+  flexGrow?: Property.FlexGrow;
+  flexShrink?: Property.FlexShrink;
   gap?: number;
-  justify: CSS.Property.JustifyContent;
+  justify: Property.JustifyContent;
   p?: number;
   pb?: number;
   pl?: number;
-  position?: CSS.Property.Position;
+  position?: Property.Position;
   pr?: number;
   pt?: number;
   px?: number;

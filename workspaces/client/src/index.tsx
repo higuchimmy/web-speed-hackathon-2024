@@ -11,10 +11,19 @@ const main = async () => {
   await registerServiceWorker();
 
   if (window.location.pathname.startsWith('/admin')) {
-    ReactDOM.createRoot($('#root').get(0)!).render(<AdminApp />);
+    ReactDOM.hydrateRoot(
+      document.getElementById('root')!,
+      <SWRConfig value={{ revalidateIfStale: true, revalidateOnFocus: false, revalidateOnReconnect: false }}>
+        <BrowserRouter>
+          <AdminApp />
+        </BrowserRouter>
+      </SWRConfig>,
+    );
+    
+    
   } else {
     ReactDOM.hydrateRoot(
-      $('#root').get(0)!,
+      document.getElementById('root')!,
       <SWRConfig value={{ revalidateIfStale: true, revalidateOnFocus: false, revalidateOnReconnect: false }}>
         <BrowserRouter>
           <ClientApp />
