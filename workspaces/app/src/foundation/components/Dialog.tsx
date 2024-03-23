@@ -1,4 +1,4 @@
-import { Close } from '@mui/icons-material';
+import Close from '@mui/icons-material/Close';
 import { useAtom } from 'jotai';
 import styled from 'styled-components';
 

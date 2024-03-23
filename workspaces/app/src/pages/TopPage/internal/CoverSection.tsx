@@ -1,4 +1,4 @@
-import { Search } from '@mui/icons-material';
+import Search from '@mui/icons-material/Search';
 import styled from 'styled-components';
 
 import { Link } from '../../../foundation/components/Link';

@@ -1,4 +1,4 @@
-import { NavigateNext } from '@mui/icons-material';
+import NavigateNext from '@mui/icons-material/NavigateNext';
 import { Suspense } from 'react';
 import styled from 'styled-components';
 

@@ -25,31 +25,37 @@ export default async () => {
           assetFileNames: '[name]-[hash][extname]',
           chunkFileNames: '[name]-[hash].js',
           entryFileNames: '[name].global.js',
-        }
+        },
       },
       sourcemap: false,
       target: 'es2020',
     },
-    plugins: [nodePolyfills({
-      exclude: [
-        'fs', 
-      ],
-      globals: {
-        Buffer: true, 
-        global: true,
-        process: true,
-      },
-      protocolImports: true,
-    }),
-    wasm(), splitVendorChunkPlugin(), reactRefresh()],
+    plugins: [
+      nodePolyfills({
+        exclude: ['fs'],
+        globals: {
+          Buffer: true,
+          global: true,
+          process: true,
+        },
+        protocolImports: true,
+      }),
+      wasm(),
+      splitVendorChunkPlugin(),
+      reactRefresh(),
+    ],
     resolve: {
       alias: {
+        './src/': path.resolve(__dirname, './src'),
+        '@': path.resolve(__dirname, './src'),
+        assets: path.resolve(__dirname, './src/assets'),
       },
     },
+    root: PACKAGE_DIR,
     server: {
       fs: {
         allow: [PACKAGE_DIR], // パッケージディレクトリへのアクセスを許可
       },
-    }
+    },
   });
 };

@@ -1,4 +1,4 @@
-import { ArrowBack } from '@mui/icons-material';
+import ArrowBack from '@mui/icons-material/ArrowBack';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { styled } from 'styled-components';
