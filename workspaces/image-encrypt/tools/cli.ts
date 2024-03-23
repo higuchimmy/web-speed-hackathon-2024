@@ -32,7 +32,7 @@ program
 
     progress.start(imagePathList.length, 0);
 
-    for (const sourceImagePath of imagePathList) {
+    imagePathList.forEach(async (sourceImagePath) => {
       progress.update({
         filename: path.basename(sourceImagePath),
       });
@@ -63,10 +63,10 @@ program
       await writeJpegXL({ filepath: exportImagePath, imageData: exportImageData });
 
       progress.increment();
-    }
+    })
 
     progress.stop();
-  });
+  })
 
 program
   .command('decrypt')
@@ -84,7 +84,8 @@ program
 
     progress.start(imagePathList.length, 0);
 
-    for (const sourceImagePath of imagePathList) {
+    // for (const sourceImagePath of imagePathList) {
+    imagePathList.forEach(async (sourceImagePath) => {
       progress.update({
         filename: path.basename(sourceImagePath),
       });
@@ -115,7 +116,7 @@ program
       await writePng({ filepath: exportImagePath, imageData: exportImageData });
 
       progress.increment();
-    }
+    })
 
     progress.stop();
   });

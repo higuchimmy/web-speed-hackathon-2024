@@ -53,7 +53,7 @@ export default defineConfig(async (): Promise<Options[]> => {
       platform: 'browser',
       sourcemap: false,
       splitting: true,
-      target: ['es2020'],
+      target: 'es2020',
       treeshake: true,
     },
   ];
