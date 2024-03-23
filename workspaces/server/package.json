@@ -2,11 +2,10 @@
   "name": "@wsh-2024/server",
   "private": true,
   "scripts": {
-    "build": "pnpm run build:clean && pnpm run build:tsup && pnpm run build:copy && pnpm run build:vite",
+    "build": "pnpm run build:clean && pnpm run build:tsup && pnpm run build:copy",
     "build:clean": "rm -rf ./dist",
     "build:copy": "cp -r ./seeds/images ./dist/images",
     "build:tsup": "tsup",
-    "build:vite": "vite build",
     "start": "node ./dist/server.js"
   },
   "dependencies": {
