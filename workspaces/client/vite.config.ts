@@ -21,6 +21,11 @@ export default async () => {
           client: path.resolve(PACKAGE_DIR, './src/index.tsx'),
           serviceworker: path.resolve(PACKAGE_DIR, './src/serviceworker/index.ts'),
         },
+        output: {
+          assetFileNames: '[name]-[hash][extname]',
+          chunkFileNames: '[name]-[hash].js',
+          entryFileNames: '[name].global.js',
+        }
       },
       sourcemap: false,
       target: 'es2020',
