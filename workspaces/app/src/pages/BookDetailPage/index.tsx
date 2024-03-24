@@ -61,7 +61,13 @@ const BookDetailPage: React.FC = () => {
     toggleFavorite();
   }, [toggleFavorite]);
 
-  const latestEpisode = episodeList?.find((episode) => episode.chapter === 1);
+  // const latestEpisode = episodeList?.find((episode) => episode.chapter === 1);
+  // episodeListをchapterをkeyにしたmapにする
+  const episodeMap = new Map<number, any>();
+  episodeList.forEach((episode) => {
+    episodeMap.set(episode.chapter, episode);
+  });
+  const latestEpisode = episodeMap.get(1);
 
   return (
     <Box height="100%" position="relative" px={Space * 2}>
