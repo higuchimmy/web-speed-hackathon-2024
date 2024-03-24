@@ -57,7 +57,7 @@ export default defineConfig(async (): Promise<Options[]> => {
       sourcemap: false,
       splitting: true,
       target: 'es2020',
-      treeshake: false,
+      treeshake: true,
     },
   ];
 });
