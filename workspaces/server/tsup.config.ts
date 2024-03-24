@@ -29,7 +29,7 @@ export default defineConfig(async (): Promise<Options[]> => {
       sourcemap: false,
       splitting: true,
       target: 'esnext',
-      treeshake: false,
+      treeshake: true,
     },
   ];
 });

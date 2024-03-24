@@ -55,7 +55,7 @@ export default defineConfig(async (): Promise<Options[]> => {
       platform: 'browser',
       skipNodeModulesBundle: true,
       sourcemap: false,
-      splitting: true,
+      splitting: false,
       target: 'es2020',
       treeshake: true,
     },
