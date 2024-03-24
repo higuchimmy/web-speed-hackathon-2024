@@ -1,8 +1,6 @@
 import Close from '@mui/icons-material/Close';
-import { useAtom } from 'jotai';
 import styled from 'styled-components';
 
-import { DialogContentAtom } from '../atoms/DialogContentAtom';
 import { Color, Space } from '../styles/variables';
 
 import { Button } from './Button';
@@ -10,7 +8,7 @@ import { Button } from './Button';
 const _Overlay = styled.div`
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0;console.log();
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -44,19 +42,27 @@ const _CloseButton = styled(Button)`
   left: -${Space * 1}px;
 `;
 
-export const Dialog: React.FC = () => {
-  const [content, updateContent] = useAtom(DialogContentAtom);
-
-  return content != null ? (
+export const Dialog = ({
+  content,
+  setIsOpened,
+}: {
+  content: React.ReactNode;
+  setIsOpened: (isOpened: boolean) => void;
+}) => {
+  return (
     <_Overlay>
       <_Wrapper>
-        <_CloseButton onClick={() => updateContent(null)}>
-          <Close height={32} style={{
-            color: `${Color.MONO_A}`,
-          }} width={32} />
+        <_CloseButton onClick={() => setIsOpened(false)}>
+          <Close
+            height={32}
+            style={{
+              color: `${Color.MONO_A}`,
+            }}
+            width={32}
+          />
         </_CloseButton>
         <_Container>{content}</_Container>
       </_Wrapper>
     </_Overlay>
-  ) : null;
+  );
 };

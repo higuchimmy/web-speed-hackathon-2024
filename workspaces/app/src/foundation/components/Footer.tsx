@@ -1,8 +1,6 @@
-import { useSetAtom } from 'jotai';
 import React, { useId } from 'react';
 import styled from 'styled-components';
 
-import { DialogContentAtom } from '../atoms/DialogContentAtom';
 import { COMPANY } from '../constants/Company';
 import { CONTACT } from '../constants/Contact';
 import { OVERVIEW } from '../constants/Overview';
@@ -12,6 +10,7 @@ import { Color, Space, Typography } from '../styles/variables';
 
 import { Box } from './Box';
 import { Button } from './Button';
+import { Dialog } from './Dialog';
 import { Flex } from './Flex';
 import { Spacer } from './Spacer';
 import { Text } from './Text';
@@ -37,10 +36,12 @@ export const Footer: React.FC = () => {
   const companyDialogA11yId = useId();
   const overviewDialogA11yId = useId();
 
-  const updateDialogContent = useSetAtom(DialogContentAtom);
+  const [isOpened, setIsOpened] = React.useState(false);
+  const [dialogContent, setDialogContent] = React.useState<React.ReactNode | null>(null);
 
   const handleRequestToTermDialogOpen = () => {
-    updateDialogContent(
+    setIsOpened(true);
+    setDialogContent(
       <_Content aria-labelledby={termDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={termDialogA11yId} typography={Typography.NORMAL16}>
           利用規約
@@ -54,7 +55,8 @@ export const Footer: React.FC = () => {
   };
 
   const handleRequestToContactDialogOpen = () => {
-    updateDialogContent(
+    setIsOpened(true);
+    setDialogContent(
       <_Content aria-labelledby={contactDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={contactDialogA11yId} typography={Typography.NORMAL16}>
           お問い合わせ
@@ -68,7 +70,8 @@ export const Footer: React.FC = () => {
   };
 
   const handleRequestToQuestionDialogOpen = () => {
-    updateDialogContent(
+    setIsOpened(true);
+    setDialogContent(
       <_Content aria-labelledby={questionDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={questionDialogA11yId} typography={Typography.NORMAL16}>
           Q&A
@@ -82,7 +85,8 @@ export const Footer: React.FC = () => {
   };
 
   const handleRequestToCompanyDialogOpen = () => {
-    updateDialogContent(
+    setIsOpened(true);
+    setDialogContent(
       <_Content aria-labelledby={companyDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={companyDialogA11yId} typography={Typography.NORMAL16}>
           運営会社
@@ -96,7 +100,8 @@ export const Footer: React.FC = () => {
   };
 
   const handleRequestToOverviewDialogOpen = () => {
-    updateDialogContent(
+    setIsOpened(true);
+    setDialogContent(
       <_Content aria-labelledby={overviewDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={overviewDialogA11yId} typography={Typography.NORMAL16}>
           Cyber TOONとは
@@ -131,6 +136,7 @@ export const Footer: React.FC = () => {
           </_Button>
         </Flex>
       </Flex>
+      {isOpened && <Dialog content={dialogContent} setIsOpened={setIsOpened} />}
     </Box>
   );
 };

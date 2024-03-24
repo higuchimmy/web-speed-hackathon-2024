@@ -59,9 +59,7 @@ async function createHTML({
     .replaceAll(
       '<script id="inject-data" type="application/json"></script>',
       `<script id="inject-data" type="application/json">
-        ${
-      JSON.stringify(injectData)
-      }
+        ${JSON.stringify(injectData)}
       </script>`,
     );
 

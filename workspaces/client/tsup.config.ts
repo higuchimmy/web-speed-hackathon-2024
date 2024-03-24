@@ -15,6 +15,7 @@ export default defineConfig(async (): Promise<Options[]> => {
     {
       bundle: true,
       clean: true,
+      dts: true,
       entry: {
         client: path.resolve(PACKAGE_DIR, './src/index.tsx'),
         serviceworker: path.resolve(PACKAGE_DIR, './src/serviceworker/index.ts'),
@@ -29,6 +30,7 @@ export default defineConfig(async (): Promise<Options[]> => {
           global: 'globalThis',
         };
         options.publicPath = '/';
+        options.chunkNames = 'chunks/[name]-[hash]';
       },
       esbuildPlugins: [
         polyfillNode({
@@ -42,17 +44,17 @@ export default defineConfig(async (): Promise<Options[]> => {
           },
         }),
       ],
-      format: ['cjs', 'esm', 'iife'],
+      external: ['react', 'react-dom', 'react-router-dom', 'swr'],
+      format: 'iife',
       loader: {
         '.json?file': 'file',
         '.wasm': 'binary',
       },
       metafile: true,
-      minify: true,
       outDir: OUTPUT_DIR,
       platform: 'browser',
       skipNodeModulesBundle: true,
-      sourcemap: 'inline',
+      sourcemap: false,
       splitting: true,
       target: 'es2020',
     },
