@@ -27,9 +27,9 @@ export default defineConfig(async (): Promise<Options[]> => {
       noExternal: [/@wsh-2024\/.*/],
       outDir: OUTPUT_DIR,
       sourcemap: false,
-      splitting: false,
+      splitting: true,
       target: 'esnext',
-      treeshake: true,
+      treeshake: false,
     },
   ];
 });
