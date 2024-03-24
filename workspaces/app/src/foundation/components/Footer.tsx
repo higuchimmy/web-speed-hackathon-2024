@@ -1,11 +1,6 @@
 import React, { useId } from 'react';
 import styled from 'styled-components';
 
-import { COMPANY } from '../constants/Company';
-import { CONTACT } from '../constants/Contact';
-import { OVERVIEW } from '../constants/Overview';
-import { QUESTION } from '../constants/Question';
-import { TERM } from '../constants/Term';
 import { Color, Space, Typography } from '../styles/variables';
 
 import { Box } from './Box';
@@ -39,8 +34,9 @@ export const Footer: React.FC = () => {
   const [isOpened, setIsOpened] = React.useState(false);
   const [dialogContent, setDialogContent] = React.useState<React.ReactNode | null>(null);
 
-  const handleRequestToTermDialogOpen = () => {
+  const handleRequestToTermDialogOpen = async () => {
     setIsOpened(true);
+    const TERM = await fetch('/assets/term.txt').then((response) => response.text());
     setDialogContent(
       <_Content aria-labelledby={termDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={termDialogA11yId} typography={Typography.NORMAL16}>
@@ -54,8 +50,9 @@ export const Footer: React.FC = () => {
     );
   };
 
-  const handleRequestToContactDialogOpen = () => {
+  const handleRequestToContactDialogOpen = async () => {
     setIsOpened(true);
+    const CONTACT = await fetch('/assets/contact.txt').then((response) => response.text());
     setDialogContent(
       <_Content aria-labelledby={contactDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={contactDialogA11yId} typography={Typography.NORMAL16}>
@@ -69,8 +66,9 @@ export const Footer: React.FC = () => {
     );
   };
 
-  const handleRequestToQuestionDialogOpen = () => {
+  const handleRequestToQuestionDialogOpen = async () => {
     setIsOpened(true);
+    const QUESTION = await fetch('/assets/question.txt').then((response) => response.text());
     setDialogContent(
       <_Content aria-labelledby={questionDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={questionDialogA11yId} typography={Typography.NORMAL16}>
@@ -84,8 +82,9 @@ export const Footer: React.FC = () => {
     );
   };
 
-  const handleRequestToCompanyDialogOpen = () => {
+  const handleRequestToCompanyDialogOpen = async () => {
     setIsOpened(true);
+    const COMPANY = await fetch('/assets/company.txt').then((response) => response.text());
     setDialogContent(
       <_Content aria-labelledby={companyDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={companyDialogA11yId} typography={Typography.NORMAL16}>
@@ -99,8 +98,9 @@ export const Footer: React.FC = () => {
     );
   };
 
-  const handleRequestToOverviewDialogOpen = () => {
+  const handleRequestToOverviewDialogOpen = async () => {
     setIsOpened(true);
+    const OVERVIEW = await fetch('/assets/overview.txt').then((response) => response.text());
     setDialogContent(
       <_Content aria-labelledby={overviewDialogA11yId} role="dialog">
         <Text as="h2" color={Color.MONO_100} id={overviewDialogA11yId} typography={Typography.NORMAL16}>
