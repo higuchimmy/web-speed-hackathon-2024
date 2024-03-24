@@ -57,7 +57,7 @@ export default defineConfig(async (): Promise<Options[]> => {
       skipNodeModulesBundle: true,
       sourcemap: false,
       splitting: true,
-      target: 'es2020',
+      target: 'es2022',
       treeshake: true,
     },
   ];

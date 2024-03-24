@@ -35,17 +35,12 @@ export const BookDetailContent: React.FC<BookDetailContentProps> = ({ book, onCl
     );
   }, [book, deleteBook, onCloseDialog, refetchBookList]);
 
+  const imageUrl = getImageUrl({ format: 'jpg', imageId: book.image.id });
+
   return (
     <Box aria-label="作品詳細" as="section">
       <Flex align="center" pb={2}>
-        <Image
-          alt={book.name}
-          aspectRatio="3 / 4"
-          height={256}
-          objectFit="cover"
-          src={getImageUrl({ format: 'jpg', imageId: book.image.id })}
-          width={192}
-        />
+        <Image alt={book.name} aspectRatio="3 / 4" height={256} objectFit="cover" src={imageUrl} width={192} />
         <Stack p={4} spacing={2}>
           <StackItem>
             <Text color="gray.600" fontSize="sm">
